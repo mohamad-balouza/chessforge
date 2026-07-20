@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0lpdxspuglt1"]
+
+[ext_resource type="Script" uid="uid://j0y72pan7nea" path="res://scripts/ui/game_scene.gd" id="1_sul5r"]
+[ext_resource type="Script" uid="uid://5ouf1c6yypkc" path="res://scripts/boards/standard_board.gd" id="2_7h61r"]
+[ext_resource type="Script" uid="uid://cloe2fixi1lbf" path="res://scripts/ui/game_hud.gd" id="3_0sr1o"]
+[ext_resource type="Script" uid="uid://cxugsltfltopg" path="res://scripts/ui/promotion_dialog.gd" id="4_kelw5"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_sul5r")
+
+[node name="Board" type="Node2D" parent="."]
+script = ExtResource("2_7h61r")
+
+[node name="PiecesContainer" type="Node2D" parent="Board"]
+
+[node name="HighlightsContainer" type="Node2D" parent="Board"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 361)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_0sr1o")
+
+[node name="PromotionDialog" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_kelw5")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PromotionDialog"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PromotionDialog/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PromotionDialog/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PromotingDialogLabel" type="Label" parent="CanvasLayer/PromotionDialog/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Choose a piece"
+
+[node name="Queen" type="Button" parent="CanvasLayer/PromotionDialog/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Queen"
+
+[node name="Rook" type="Button" parent="CanvasLayer/PromotionDialog/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rook"
+
+[node name="Bishop" type="Button" parent="CanvasLayer/PromotionDialog/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bishop"
+
+[node name="Knight" type="Button" parent="CanvasLayer/PromotionDialog/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Knight"
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
